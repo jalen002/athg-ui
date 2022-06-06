@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { FormGroup, FormLabel, FormControl, Button, Input, InputLabel, FormHelperText } from '@material-ui/core';
 
 const HospitalForm = (props) => {
   const [hospital, setHospital] = useState({
     hospitalname: props.hospital ? props.hospital.hospitalname : '',
     director: props.hospital ? props.hospital.director : '',
-    address: props.hospital ? props.hospital.address : '',
-    employees: props.hospital ? props.hospital.employees : []
+    // address: props.hospital ? props.hospital.address : '',
+    // employees: props.hospital ? props.hospital.employees : []
   });
 
   const [errorMsg, setErrorMsg] = useState('');
-  const { hospitalname, director, address, employees } = hospital;
+  const { hospitalname, director } = hospital;
+  // const { hospitalname, director, address, employees } = hospital;
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
-    const values = [hospitalname, director, address, employees];
+    const values = [hospitalname, director];
+    // const values = [hospitalname, director, address, employees];
     let errorMsg = '';
 
     const allFieldsFilled = values.every((field) => {
@@ -26,8 +28,8 @@ const HospitalForm = (props) => {
       const hospital = {
         hospitalname,
         director,
-        address,
-        employees
+        // address,
+        // employees
       };
       props.handleOnSubmit(hospital);
     } else {
@@ -47,33 +49,25 @@ const HospitalForm = (props) => {
   return (
     <div className="main-form">
       {errorMsg && <p className="errorMsg">{errorMsg}</p>}
-      <Form onSubmit={handleOnSubmit}>
-        <Form.Group controlId="name">
-          <Form.Label>Hospital Name</Form.Label>
-          <Form.Control
-            className="input-control"
-            type="text"
-            name="hospitalname"
-            value={hospitalname}
-            placeholder="Enter name of hospital"
-            onChange={handleInputChange}
-          />
-        </Form.Group>
-        <Form.Group controlId="director">
-          <Form.Label>Hospital Director</Form.Label>
-          <Form.Control
-            className="input-control"
-            type="text"
-            name="director"
-            value={director}
-            placeholder="Enter name of the Hospital Director"
-            onChange={handleInputChange}
-          />
-        </Form.Group>
-        <Button variant="primary" type="submit" className="submit-btn">
+      <form onSubmit={handleOnSubmit}>
+        <FormGroup>
+          <FormControl>
+            <InputLabel>Hospital Name</InputLabel>
+            <Input id="hospitalname" name="hospitalname" onChange={handleInputChange}/>
+            <FormHelperText id="hospitalname-helper-text">Name of the Hospital</FormHelperText>
+          </FormControl>
+        </FormGroup>
+        <FormGroup>
+          <FormControl>
+            <InputLabel>Hospital Director</InputLabel>
+            <Input id="director" name="director" onChange={handleInputChange}/>
+            <FormHelperText id="director-helper-text">Name of the Hospital Director</FormHelperText>
+          </FormControl>
+        </FormGroup>
+        <Button type="submit" className="submit-btn">
           Submit
         </Button>
-      </Form>
+      </form>
     </div>
   );
 };
