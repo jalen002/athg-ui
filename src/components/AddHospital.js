@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import HospitalForm from './HospitalForm';
+import HospitalsContext from '../context/HospitalsContext';
 
-const AddHospital = () => {
+const AddHospital = ({ history }) => {
+  const { hospitals, setHospitals } = useContext(HospitalsContext);
+
   const handleOnSubmit = (Hospital) => {
     console.log(Hospital);
   };

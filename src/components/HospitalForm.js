@@ -1,22 +1,19 @@
 import React, { useState } from 'react';
-import { FormGroup, FormLabel, FormControl, Button, Input, InputLabel, FormHelperText } from '@material-ui/core';
+import { FormGroup, FormControl, Button, Input, InputLabel, FormHelperText } from '@material-ui/core';
 
 const HospitalForm = (props) => {
   const [hospital, setHospital] = useState({
-    hospitalname: props.hospital ? props.hospital.hospitalname : '',
+    name: props.hospital ? props.hospital.name : '',
     director: props.hospital ? props.hospital.director : '',
-    // address: props.hospital ? props.hospital.address : '',
-    // employees: props.hospital ? props.hospital.employees : []
+    address: props.hospital ? props.hospital.address : '',
   });
 
   const [errorMsg, setErrorMsg] = useState('');
-  const { hospitalname, director } = hospital;
-  // const { hospitalname, director, address, employees } = hospital;
+  const { name, director, address } = hospital;
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
-    const values = [hospitalname, director];
-    // const values = [hospitalname, director, address, employees];
+    const values = [name, director, address];
     let errorMsg = '';
 
     const allFieldsFilled = values.every((field) => {
@@ -26,10 +23,9 @@ const HospitalForm = (props) => {
 
     if (allFieldsFilled) {
       const hospital = {
-        hospitalname,
+        name,
         director,
-        // address,
-        // employees
+        address
       };
       props.handleOnSubmit(hospital);
     } else {
@@ -53,15 +49,22 @@ const HospitalForm = (props) => {
         <FormGroup>
           <FormControl>
             <InputLabel>Hospital Name</InputLabel>
-            <Input id="hospitalname" name="hospitalname" onChange={handleInputChange}/>
-            <FormHelperText id="hospitalname-helper-text">Name of the Hospital</FormHelperText>
+            <Input id="name" name="name" onChange={handleInputChange} value={name}/>
+            <FormHelperText id="name-helper-text">Name of the Hospital</FormHelperText>
           </FormControl>
         </FormGroup>
         <FormGroup>
           <FormControl>
-            <InputLabel>Hospital Director</InputLabel>
-            <Input id="director" name="director" onChange={handleInputChange}/>
+            <InputLabel>Director</InputLabel>
+            <Input id="director" name="director" onChange={handleInputChange} value={director}/>
             <FormHelperText id="director-helper-text">Name of the Hospital Director</FormHelperText>
+          </FormControl>
+        </FormGroup>
+        <FormGroup>
+          <FormControl>
+            <InputLabel>Address</InputLabel>
+            <Input id="address" name="address" onChange={handleInputChange} value={address}/>
+            <FormHelperText id="director-helper-text">Address</FormHelperText>
           </FormControl>
         </FormGroup>
         <Button type="submit" className="submit-btn">
