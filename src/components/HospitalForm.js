@@ -50,21 +50,18 @@ const HospitalForm = (props) => {
           <FormControl>
             <InputLabel>Hospital Name</InputLabel>
             <Input id="name" name="name" onChange={handleInputChange} value={name}/>
-            <FormHelperText id="name-helper-text">Name of the Hospital</FormHelperText>
           </FormControl>
         </FormGroup>
         <FormGroup>
           <FormControl>
             <InputLabel>Director</InputLabel>
             <Input id="director" name="director" onChange={handleInputChange} value={director}/>
-            <FormHelperText id="director-helper-text">Name of the Hospital Director</FormHelperText>
           </FormControl>
         </FormGroup>
         <FormGroup>
           <FormControl>
             <InputLabel>Address</InputLabel>
             <Input id="address" name="address" onChange={handleInputChange} value={address}/>
-            <FormHelperText id="director-helper-text">Address</FormHelperText>
           </FormControl>
         </FormGroup>
         <Button type="submit" className="submit-btn">
