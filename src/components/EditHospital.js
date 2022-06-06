@@ -6,10 +6,10 @@ import HospitalsContext from '../context/HospitalsContext';
 const EditHospital = ({ history }) => {
   const { hospitals, setHospitals } = useContext(HospitalsContext);
   const { id } = useParams();
-  const hospitalToEdit = hospitals.find((hospital) => hospital.id === id);
+  const hospitalToEdit = hospitals.find((hospital) => hospital.id.toString() === id.toString());
 
   const handleOnSubmit = (hospital) => {
-    const filteredHospitals = hospitals.filter((hospital) => hospital.id !== id);
+    const filteredHospitals = hospitals.filter((hospital) => hospital.id.toString() !== id.toString());
     setHospitals([hospital, ...filteredHospitals]);
     history.push('/');
   };
