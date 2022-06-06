@@ -1,0 +1,14 @@
+
+
+.aboutMeHeader {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    font-size: 24px;
+    color: black;
+}
+
+.aboutMeBody {
+    display: flex;
+    padding: 30px;
+}
