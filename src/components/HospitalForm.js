@@ -3,13 +3,14 @@ import { FormGroup, FormControl, Button, Input, InputLabel, FormHelperText } fro
 
 const HospitalForm = (props) => {
   const [hospital, setHospital] = useState({
+    id: props.hospital ? props.hospital.id : null,
     name: props.hospital ? props.hospital.name : '',
     director: props.hospital ? props.hospital.director : '',
     address: props.hospital ? props.hospital.address : '',
   });
 
   const [errorMsg, setErrorMsg] = useState('');
-  const { name, director, address } = hospital;
+  const { id, name, director, address } = hospital;
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
@@ -27,6 +28,9 @@ const HospitalForm = (props) => {
         director,
         address
       };
+      if (id != null){
+        hospital.id = id;
+      }
       props.handleOnSubmit(hospital);
     } else {
       errorMsg = 'Please fill out all the fields.';

@@ -17,7 +17,7 @@ const AppRouter = () => {
     }).catch(error => {
       alert("Error retrieving list of hospitals");
     });
-  }, []);
+  }, [setHospitals]);
 
   return (
     <BrowserRouter>

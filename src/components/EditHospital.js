@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import HospitalForm from './HospitalForm';
 import HospitalsContext from '../context/HospitalsContext';
+import { updateHospital } from '../services/HospitalService';
 
 const EditHospital = ({ history }) => {
   const { hospitals, setHospitals } = useContext(HospitalsContext);
@@ -9,9 +10,12 @@ const EditHospital = ({ history }) => {
   const hospitalToEdit = hospitals.find((hospital) => hospital.id.toString() === id.toString());
 
   const handleOnSubmit = (hospital) => {
-    const filteredHospitals = hospitals.filter((hospital) => hospital.id.toString() !== id.toString());
-    setHospitals([hospital, ...filteredHospitals]);
-    history.push('/');
+    updateHospital(hospital)
+    .then(response => {
+      history.push('/');
+    }).catch(error => {
+      alert("Error saving updates to hospital");
+    })
   };
 
   return (

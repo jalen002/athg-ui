@@ -4,6 +4,13 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import { useHistory } from 'react-router-dom';
 
+const cardStyle = {
+  display: "block",
+  minHeight: "30vh",
+  maxHeight: "30vh",
+  width: "280px",
+  backgroundColor: 'rgb(235,255,255)'
+};
 
 const Hospital = ({
   id,
@@ -17,7 +24,7 @@ const Hospital = ({
 
   return (
     <div style={{margin:10}}>
-      <Card sx={{ maxWidth: 345 }} style={{backgroundColor:'rgb(235,255,255)'}}>
+      <Card style={cardStyle}>
         <CardContent>
           <CardHeader
           title={name}
