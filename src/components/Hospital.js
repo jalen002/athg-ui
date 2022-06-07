@@ -4,12 +4,18 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import { useHistory } from 'react-router-dom';
 
+
 const cardStyle = {
-  display: "block",
-  minHeight: "30vh",
-  maxHeight: "30vh",
-  width: "280px",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between",
+  height: "100%",
+  width: "310px",
   backgroundColor: 'rgb(235,255,255)'
+};
+
+const cardContentStyle = {
+  alignItems:"top"
 };
 
 const Hospital = ({
@@ -25,11 +31,11 @@ const Hospital = ({
   return (
     <div style={{margin:10}}>
       <Card style={cardStyle}>
-        <CardContent>
-          <CardHeader
-          title={name}
-          action={<IconButton style={{align: 'right'}} variant="outlined" size="small" onClick={() => handleDeleteHospital(id)}><DeleteIcon /></IconButton>}
-          />
+        <CardHeader
+        title={name}
+        action={<IconButton style={{align: 'right'}} variant="outlined" size="small" onClick={() => handleDeleteHospital(id)}><DeleteIcon /></IconButton>}
+        />
+        <CardContent style={cardContentStyle}>
           <Typography variant="body1" color="textSecondary">
             {director}
           </Typography>
