@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FormGroup, FormControl, Button, Input, InputLabel, FormHelperText } from '@material-ui/core';
+import { FormGroup, FormControl, Button, Input, InputLabel } from '@material-ui/core';
 
 const HospitalForm = (props) => {
   const [hospital, setHospital] = useState({

@@ -12,6 +12,7 @@ const EditHospital = ({ history }) => {
   const handleOnSubmit = (hospital) => {
     updateHospital(hospital)
     .then(response => {
+      setHospitals(hospitals.filter(hosp => hosp.id !== hospital.id));
       history.push('/');
     }).catch(error => {
       alert("Error saving updates to hospital");

@@ -9,6 +9,7 @@ import HospitalsContext from '../context/HospitalsContext';
 
 const AppRouter = () => {
   const [hospitals, setHospitals] = useState([]);
+  const hospitalStringified = JSON.stringify(hospitals);
 
   useEffect(() => {
     getHospitals()
@@ -17,7 +18,7 @@ const AppRouter = () => {
     }).catch(error => {
       alert("Error retrieving list of hospitals");
     });
-  }, [setHospitals]);
+  }, [hospitalStringified]);
 
   return (
     <BrowserRouter>

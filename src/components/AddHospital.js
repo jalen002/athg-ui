@@ -9,6 +9,7 @@ const AddHospital = ({ history }) => {
   const handleOnSubmit = (hospital) => {
     createHospital(hospital)
     .then(response => {
+      setHospitals(hospitals.push(hospital));
       history.push('/');
     }).catch(error => {
       alert("Failed to create hospital");

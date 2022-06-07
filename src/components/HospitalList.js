@@ -12,6 +12,7 @@ const HospitalList = () => {
     deleteHospital(hospitalId)
     .then(response => {
       // do something to trigger page refresh
+      setHospitals(hospitals.filter(hospital => hospital.id !== hospitalId));
     }).catch(error => {
       alert("Failed to delete hospital with Id: " + hospitalId);
     });

@@ -19,13 +19,13 @@ const cardContentStyle = {
 };
 
 const Hospital = ({
-  id,
-  name,
-  director,
-  address,
-  employees,
-  handleDeleteHospital
-}) => {
+    id,
+    name,
+    director,
+    address,
+    employees,
+    handleDeleteHospital
+  }) => {
   const history = useHistory();
 
   return (
