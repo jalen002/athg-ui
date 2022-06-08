@@ -7,14 +7,15 @@ const HospitalForm = (props) => {
     name: props.hospital ? props.hospital.name : '',
     director: props.hospital ? props.hospital.director : '',
     address: props.hospital ? props.hospital.address : '',
+    phone: props.hospital ? props.hospital.phone : ''
   });
 
   const [errorMsg, setErrorMsg] = useState('');
-  const { id, name, director, address } = hospital;
+  const { id, name, director, address, phone } = hospital;
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
-    const values = [name, director, address];
+    const values = [name, director, address, phone];
     let errorMsg = '';
 
     const allFieldsFilled = values.every((field) => {
@@ -26,7 +27,8 @@ const HospitalForm = (props) => {
       const hospital = {
         name,
         director,
-        address
+        address,
+        phone
       };
       if (id != null){
         hospital.id = id;
@@ -66,6 +68,12 @@ const HospitalForm = (props) => {
           <FormControl>
             <InputLabel>Address</InputLabel>
             <Input id="address" name="address" onChange={handleInputChange} value={address}/>
+          </FormControl>
+        </FormGroup>
+        <FormGroup>
+          <FormControl>
+            <InputLabel>Phone</InputLabel>
+            <Input id="phone" name="phone" type="number" onChange={handleInputChange} value={phone}/>
           </FormControl>
         </FormGroup>
         <Button type="submit" className="submit-btn">

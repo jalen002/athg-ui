@@ -24,6 +24,7 @@ const Hospital = ({
     director,
     address,
     employees,
+    phone,
     handleDeleteHospital
   }) => {
   const history = useHistory();
@@ -38,6 +39,10 @@ const Hospital = ({
         <CardContent style={cardContentStyle}>
           <Typography variant="body1" color="textSecondary">
             {director}
+          </Typography>
+          <br/>
+          <Typography variant="body1" color="textSecondary">
+            {phone}
           </Typography>
           <br/>
           <Typography variant="body1" color="textSecondary">
